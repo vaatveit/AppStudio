@@ -39,6 +39,11 @@ Control {
     property alias cellWidth: gridView.cellWidth
     property alias cellHeight: gridView.cellHeight
     property alias model: gridView.model
+
+    // depends on non-NOTIFYable properties:
+    //    SortFilterDelegateModel_QMLTYPE_272_QML_570::model
+    //    SortFilterDelegateModel_QMLTYPE_272_QML_570::model
+
     readonly property ListModel baseModel: model.model ? model.model : model
     property alias delegate: gridView.delegate
     property alias count: gridView.count

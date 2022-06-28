@@ -26,7 +26,7 @@ Item {
 
     //--------------------------------------------------------------------------
 
-    property bool debug: false
+    property bool debug: true
     property bool isOnline: Networking.isOnline
 
     property bool managementEnabled: true
@@ -1896,7 +1896,7 @@ Item {
 
         onReadyStateChanged: {
             if (debug) {
-                console.log(logCategory, objectName, "readyState:", readyState);
+                console.log(objectName, "readyState:", readyState);
             }
 
             connecting(connectRequest);
@@ -1986,7 +1986,7 @@ Item {
     Connections {
         target: Networking
 
-        function onAuthenticationChallenge() {
+        function onAuthenticationChallenge(authChallenge) {
             if (debug) {
                 console.log(logCategory, "onAuthenticationChallenge:", authChallenge.authenticationChallengeType, "requestUrl:", authChallenge.requestUrl);
             }

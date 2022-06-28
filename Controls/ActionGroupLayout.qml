@@ -84,7 +84,7 @@ Control {
             Connections {
                 target: button.action
 
-                onTriggered: {
+                function onTriggered() {
                     control.triggered(button.action);
                 }
             }

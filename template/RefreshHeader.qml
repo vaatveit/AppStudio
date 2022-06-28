@@ -57,7 +57,7 @@ Item {
     Connections {
         target: refreshHeader.target
 
-        onDragEnded: {
+        function onDragEnded() {
             if (refreshHeader.state == "pulled") {
                 refresh();
             }

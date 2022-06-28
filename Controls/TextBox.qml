@@ -14,9 +14,9 @@
  *
  */
 
-import QtQuick 2.12
-import QtQuick.Controls 2.5
-import QtQuick.Layouts 1.12
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Layouts 1.15
 
 import ArcGIS.AppFramework 1.0
 
@@ -72,6 +72,7 @@ Control {
     property Component leftIndicator
     property Component rightIndicator
 
+    // Unable to assign TextBoxContextMenu_QMLTYPE_170 to Popup_QMLTYPE_22
     property Popup contextPopup: contextMenu
     readonly property bool contextPopupVisible: contextPopup && contextPopup.visible
 

@@ -223,7 +223,7 @@ Item {
     Connections {
         target: positionSourceManager
 
-        onNewPosition: {
+        function onNewPosition() {
             control.position = position;
         }
     }

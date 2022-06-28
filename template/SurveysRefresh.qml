@@ -115,14 +115,14 @@ Item {
     //--------------------------------------------------------------------------
 
     function refresh() {
-        console.log(logCategory, arguments.callee.name, "surveys:", model.count);
+        console.log(arguments.callee.name, "surveys:", model.count);
 
         if (!enabled) {
             return;
         }
 
         if (busy) {
-            console.warn(logCategory, arguments.callee.name, "busy");
+            console.warn(arguments.callee.name, "busy");
             return;
         }
 
@@ -135,7 +135,7 @@ Item {
             }
         }
 
-        console.log(logCategory, arguments.callee.name, "ids:", ids.length);
+        console.log(arguments.callee.name, "ids:", ids.length);
 
         if (ids.length < 1) {
             return;

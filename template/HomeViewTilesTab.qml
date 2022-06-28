@@ -293,7 +293,7 @@ HomeViewTab {
 
         model: surveysModel
 
-        onFinished: {
+        function onFinished() {
             updatesNotification.finished();
             Qt.callLater(refreshTiles);
         }
@@ -304,7 +304,7 @@ HomeViewTab {
     Connections {
         target: app
 
-        onOpenParametersChanged: {
+        function onOpenParametersChanged() {
             if (app.openParameters) {
                 checkOpenParameters();
             }

@@ -54,7 +54,8 @@ GalleryDelegate {
         active: debug
 
         sourceComponent: AccessIcon {
-            access: surveyItem.access
+            // surveyItem may be undefined here
+            access: surveyItem ? surveyItem.access : "";
 
             color: "#eeeeee"
             border {

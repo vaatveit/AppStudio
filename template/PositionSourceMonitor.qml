@@ -14,9 +14,9 @@
  *
  */
 
-import QtQml 2.12
-import QtQuick 2.12
-import QtQuick.Controls 2.12
+import QtQml 2.15
+import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Dialogs 1.2
 
 import ArcGIS.AppFramework 1.0
@@ -126,7 +126,7 @@ Item {
 
         target: positionSourceManager
 
-        function onNewPosition() {
+        function onNewPosition(position) {
             positionReceivedTime = positionSourceManager.positionTimestamp
 
             if (!positionSourceManager.isGNSS || position.fixTypeValid && position.fixType > 0) {

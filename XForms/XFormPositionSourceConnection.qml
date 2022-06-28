@@ -87,7 +87,7 @@ Item {
     Connections {
         target: positionSourceManager
 
-        function onNewPosition() {
+        function onNewPosition(position) {
             if (active) {
                 positionSourceConnection.errorString = "";
 

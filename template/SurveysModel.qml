@@ -71,7 +71,7 @@ ListModel {
     readonly property Connections _connections: Connections {
         target: formsFolder
 
-        onFormsChanged: {
+        function onFormsChanged() {
             listModel.update();
         }
     }
@@ -294,7 +294,7 @@ ListModel {
         target: app
         ignoreUnknownSignals: true
 
-        onBroadcastSurveyUpdate: {
+        function onBroadcastSurveyUpdate() {
             refreshItem(id);
             updateUpdatesAvailable();
             refreshed();
