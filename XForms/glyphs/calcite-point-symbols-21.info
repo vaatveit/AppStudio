@@ -1,0 +1,94 @@
+{
+    "box-pin": {
+        "xorigin": 0.5,
+        "yorigin": 0.88
+    },
+    "flag": {
+        "xorigin": 0.36,
+        "yorigin": 0.9
+    },
+    "esri-pin-one": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "esri-pin-two": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "gas-lamp": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "ili-ground-ref-markers": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "platform": {
+        "xorigin": 0.5,
+        "yorigin": 0.95
+    },
+    "pole": {
+        "xorigin": 0.5,
+        "yorigin": 0.95
+    },
+    "poles": {
+        "xorigin": 0.5,
+        "yorigin": 0.92
+    },
+    "pushpin-one": {
+        "xorigin": 0.5,
+        "yorigin": 0.88
+    },
+    "pushpin-two": {
+        "xorigin": 0.51,
+        "yorigin": 0.88
+    },
+    "signs": {
+        "xorigin": 0.5,
+        "yorigin": 0.92
+    },
+    "special-incident": {
+        "xorigin": 0.4,
+        "yorigin": 0.86
+    },
+    "street-trees": {
+        "xorigin": 0.5,
+        "yorigin": 0.92
+    },
+    "streetlight": {
+        "xorigin": 0.3,
+        "yorigin": 0.86
+    },
+    "tear-pin-one": {
+        "xorigin": 0.5,
+        "yorigin": 0.88
+    },
+    "tear-pin-two": {
+        "xorigin": 0.5,
+        "yorigin": 0.88
+    },
+    "telecom": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "transit-rider-report": {
+        "xorigin": 0.4,
+        "yorigin": 0.86
+    },
+    "tower": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "wellhead": {
+        "xorigin": 0.5,
+        "yorigin": 0.9
+    },
+    "wellhead-source-flange": {
+        "xorigin": 0.5,
+        "yorigin": 0.95
+    },
+    "wire-down": {
+        "xorigin": 0.5,
+        "yorigin": 0.93
+    }
+}

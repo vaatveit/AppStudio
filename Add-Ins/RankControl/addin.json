@@ -1,0 +1,12 @@
+{
+    "control": {
+        "type": "rank",
+        "enableClear": true,
+        "enableRecalculate": false
+    },
+    "icon": "icon.png",
+    "id": "org.AddIn.RankControl",
+    "mainFile": "RankControlAddIn.qml",
+    "projectFile": "RankControlAddIn.qmlproject",
+    "type": "control"
+}

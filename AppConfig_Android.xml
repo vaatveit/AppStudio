@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="utf-8"?>
+<restrictions xmlns:android="http://schemas.android.com/apk/res/android">
+    <restriction
+        android:key="portalURL"
+        android:restrictionType="string"
+        android:title="Portal URL"
+        android:defaultValue="https://www.arcgis.com" />
+    <restriction
+        android:key="portalName"
+        android:restrictionType="string"
+        android:title="Portal name"
+        android:defaultValue="ArcGIS Online" />
+    <restriction
+        android:key="portalAuthentication"
+        android:restrictionType="string"
+        android:title="Authentication"
+        android:defaultValue="" />
+    <restriction
+        android:key="enablePortalManagement"
+        android:restrictionType="bool"
+        android:title="Enable portal management"
+        android:defaultValue="true" />
+    <restriction
+        android:key="requireSignIn"
+        android:restrictionType="bool"
+        android:title="Require users to sign in"
+        android:defaultValue="false" />
+    <restriction
+        android:key="portalResourceKey"
+        android:restrictionType="string"
+        android:title="Properties resource key"
+        android:defaultValue="Survey123Properties" />
+    <restriction
+        android:key="enableDiagnostics"
+        android:restrictionType="bool"
+        android:title="Enable diagnostics"
+        android:defaultValue="true" />
+    <restriction
+        android:key="enableDataRecovery"
+        android:restrictionType="bool"
+        android:title="Enable data recovery"
+        android:defaultValue="false" />
+</restrictions>

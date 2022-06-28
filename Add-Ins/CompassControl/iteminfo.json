@@ -1,0 +1,53 @@
+{
+    "access": "private",
+    "accessInformation": null,
+    "appCategories": [
+    ],
+    "avgRating": 0,
+    "banner": null,
+    "categories": [
+    ],
+    "commentsEnabled": true,
+    "created": 1579745108000,
+    "culture": "en-au",
+    "description": "Compass control add-in",
+    "documentation": null,
+    "extent": [
+    ],
+    "groupDesignations": null,
+    "guid": null,
+    "industries": [
+    ],
+    "isOrgItem": true,
+    "itemControl": "admin",
+    "languages": [
+    ],
+    "largeThumbnail": null,
+    "licenseInfo": null,
+    "listed": false,
+    "numComments": 0,
+    "numRatings": 0,
+    "numViews": 0,
+    "ownerFolder": null,
+    "properties": null,
+    "protected": false,
+    "proxyFilter": null,
+    "scoreCompleteness": 25,
+    "screenshots": [
+    ],
+    "size": 329402,
+    "snippet": "Compass control add-in",
+    "spatialReference": null,
+    "tags": [
+        "survey123addin"
+    ],
+    "thumbnail": "thumbnail/thumbnail.png",
+    "title": "CompassControl",
+    "type": "Survey123 Add In",
+    "typeKeywords": [
+        "Add In",
+        "Survey123 Add In",
+        "Tool"
+    ],
+    "url": null
+}

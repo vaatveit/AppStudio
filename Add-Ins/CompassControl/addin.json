@@ -1,0 +1,18 @@
+{
+    "icon": "icon.png",
+    "id": "org.AddIn.CompassControl",
+    "mainFile": "CompassControlAddIn.qml",
+    "projectFile": "CompassControlAddIn.qmlproject",
+    "type": "control",
+    "control": {
+        "type": "input",
+        "appearance": "bearing",
+        "enableClear": false,
+        "enableRecalculate": false
+    },
+    "version": {
+        "major": 0,
+        "micro": 1,
+        "minor": 0
+    }
+}

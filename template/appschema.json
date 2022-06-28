@@ -1,0 +1,106 @@
+{
+    "propertiesInfo": {
+        "title": "Global CHE Network",
+        "categoryInfos": [
+            {
+                "title": "Theme",
+                "propertyInfos": [
+                    {
+                        "type": "color",
+                        "name": "textColor",
+                        "label": "Text color"
+                    },
+                    {
+                        "type": "color",
+                        "name": "backgroundColor",
+                        "label": "Background color"
+                    },
+                    {
+                        "type": "color",
+                        "name": "titleBarTextColor",
+                        "label": "Title bar text color"
+                    },
+                    {
+                        "type": "color",
+                        "name": "titleBarBackgroundColor",
+                        "label": "Title bar background color"
+                    },
+                    {
+                        "type": "string",
+                        "name": "fontFamily",
+                        "label": "Font Family",
+                        "placeholder": "Font family name"
+                    }
+                ]
+            },
+            {
+                "title": "Portal",
+                "propertyInfos": [
+                    {
+                        "type": "string",
+                        "name": "portalURL",
+                        "label": "Url",
+                        "placeholder": "https://www.arcgis.com"
+                    },
+                    {
+                        "type": "string",
+                        "name": "portalName",
+                        "label": "Name",
+                        "placeholder": "ArcGIS Online"
+                    },
+                    {
+                        "type": "string",
+                        "name": "portalAuthentication",
+                        "label": "Authentication"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "enablePortalManagement",
+                        "label": "Management enabled"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "requireSignIn",
+                        "label": "Require users to sign in"
+                    },
+                    {
+                        "type": "string",
+                        "name": "portalResourceKey",
+                        "label": "Resource key",
+                        "placeholder": "Survey123Properties"
+                    }
+                ]
+            },
+            {
+                "title": "General",
+                "propertyInfos": [
+                    {
+                        "type": "boolean",
+                        "name": "enableDiagnostics",
+                        "label": "Enable diagnostics"
+                    },
+                    {
+                        "type": "boolean",
+                        "name": "enableDataRecovery",
+                        "label": "Enable data recovery"
+                    }
+                ]
+            },
+            {
+                "title": "Map",
+                "propertyInfos": [
+                    {
+                        "type": "string",
+                        "name": "defaultBasemap",
+                        "label": "Default basemap"
+                    },
+                    {
+                        "type": "string",
+                        "name": "mapPlugin",
+                        "label": "Plugin"
+                    }
+                ]
+            }
+        ]
+    }
+}

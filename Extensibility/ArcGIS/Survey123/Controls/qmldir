@@ -1,0 +1,7 @@
+module ArcGIS.Survey123.Controls
+depends ArcGIS.AppFramework 1.0
+
+TextBox 1.0 TextBox.qml
+CompassIndicator 1.0 ../../../../XForms/Sensors/CompassIndicator.qml
+LevelIndicator 1.0 ../../../../XForms/Sensors/LevelIndicator.qml
+

@@ -1,0 +1,127 @@
+<managedAppConfiguration>
+	<version>1.0.0</version>
+	<bundleId>com.esri.survey123</bundleId>
+	<dict>
+		<string keyName="portalURL">
+			<defaultValue>
+				<value>https:&#x2F;&#x2F;www.arcgis.com</value>
+			</defaultValue>
+		</string>
+		<string keyName="portalName">
+			<defaultValue>
+				<value>ArcGIS Online</value>
+			</defaultValue>
+		</string>
+		<string keyName="portalAuthentication">
+			<defaultValue>
+				<value></value>
+			</defaultValue>
+		</string>
+		<boolean keyName="enablePortalManagement">
+			<defaultValue>
+				<value>true</value>
+			</defaultValue>
+		</boolean>
+		<boolean keyName="requireSignIn">
+			<defaultValue>
+				<value></value>
+			</defaultValue>
+		</boolean>
+		<string keyName="portalResourceKey">
+			<defaultValue>
+				<value>Survey123Properties</value>
+			</defaultValue>
+		</string>
+		<boolean keyName="enableDiagnostics">
+			<defaultValue>
+				<value>true</value>
+			</defaultValue>
+		</boolean>
+		<boolean keyName="enableDataRecovery">
+			<defaultValue>
+				<value></value>
+			</defaultValue>
+		</boolean>
+	</dict>
+	<presentation defaultLocale="en-US">
+	<fieldGroup>
+		<name>
+			<language value="en-US">Default portal</language>
+		</name>
+		<field keyName="portalURL" type="input">
+			<label>
+				<language value="en-US">URL</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+		<field keyName="portalName" type="input">
+			<label>
+				<language value="en-US">Name</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+		<field keyName="portalAuthentication" type="input">
+			<label>
+				<language value="en-US">Authentication</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+	</fieldGroup>
+	<fieldGroup>
+		<name>
+			<language value="en-US">Portal</language>
+		</name>
+		<field keyName="enablePortalManagement" type="checkbox">
+			<label>
+				<language value="en-US">Enable management</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+		<field keyName="requireSignIn" type="checkbox">
+			<label>
+				<language value="en-US">Require users to sign in</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+		<field keyName="portalResourceKey" type="input">
+			<label>
+				<language value="en-US">Resource key</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+	</fieldGroup>
+	<fieldGroup>
+		<name>
+			<language value="en-US">General</language>
+		</name>
+		<field keyName="enableDiagnostics" type="checkbox">
+			<label>
+				<language value="en-US">Enable diagnostics</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+		<field keyName="enableDataRecovery" type="checkbox">
+			<label>
+				<language value="en-US">Enable data recovery</language>
+			</label>
+			<description>
+				<language value="en-US"></language>
+			</description>
+		</field>
+	</fieldGroup>
+	</presentation>
+</managedAppConfiguration>

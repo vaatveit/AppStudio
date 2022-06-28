@@ -1,0 +1,33 @@
+/*
+ *------------------------------------------------------------------------------
+ * CompassControl
+ * Created 2019-11-20 10:37:01
+ *------------------------------------------------------------------------------
+ */
+
+import QmlProject 1.1
+
+Project {
+    mainFile: "CompassControl.qml"
+
+    QmlFiles {
+        directory: "."
+        recursive: true
+    }
+
+    JavaScriptFiles {
+        directory: "."
+        recursive: true
+    }
+
+    ImageFiles {
+        directory: "."
+        recursive: true
+    }
+
+    Files {
+        directory: "."
+        recursive: true
+        filter: "*.json;*.html;*.txt"
+    }
+}

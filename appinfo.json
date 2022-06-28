@@ -1,0 +1,210 @@
+{
+    "appLink": "",
+    "arcgisRuntime": {
+        "version": {
+            "major": 100,
+            "minor": 5
+        }
+    },
+    "capabilities": {
+        "audio": false,
+        "backgroundModes": {
+            "audio": {
+                "enabled": false
+            },
+            "bluetooth": {
+                "central": {
+                    "enabled": false
+                }
+            },
+            "ios": {
+                "externalAccessory": false
+            },
+            "location": {
+                "enabled": false
+            }
+        },
+        "beacon": false,
+        "biometricAuthentication": false,
+        "bluetooth": false,
+        "camera": true,
+        "enterpriseAuthentication": true,
+        "fileSharing": true,
+        "highAccuracyLocation": false,
+        "interAppFileSharing": true,
+        "ios": {
+            "appTransportSecurity": {
+                "allowArbitraryLoads": false
+            },
+            "externalAccessoryProtocolStrings": [
+            ]
+        },
+        "localnotification": true,
+        "location": true,
+        "microphone": true,
+        "network": true,
+        "storage": true,
+        "vibration": true
+    },
+    "commandLineOptions": [
+        {
+            "description": "Path to add-in folder",
+            "name": "addin"
+        }
+    ],
+    "deployment": {
+        "android": {
+            "compileSdkVersion": 29,
+            "packageName": "",
+            "targetSdkVersion": 29,
+            "trustUserCertificates": true
+        },
+        "arcgisRuntimeExtensionsLicense": "",
+        "arcgisRuntimeLicense": "runtimelite,1000,rud2165425606,none,B5H93PJPXJK94P7EJ215",
+        "clientId": "",
+        "ios": {
+            "bundleId": "",
+            "codeSignIdentity": ""
+        },
+        "macos": {
+            "bundleId": "",
+            "codeSignIdentity": ""
+        },
+        "plugins": {
+            "include": {
+                "geoservices": [
+                    "ArcGISRuntime-GeoServices"
+                ]
+            }
+        },
+        "publisherName": "",
+        "releaseType": {
+            "enterprise": {
+                "ios": {
+                    "bundleId": ""
+                }
+            }
+        },
+        "shortcutName": "Global CHE Network",
+        "uwp": {
+            "displayName": "ArcGIS Survey123",
+            "packageName": "",
+            "productID": ""
+        }
+    },
+    "devicesTypes": [
+        "desktop",
+        "tablet",
+        "phone"
+    ],
+    "display": {
+        "desktop": {
+            "minimumHeight": 650,
+            "minimumWidth": 400,
+            "windowMode": "default"
+        },
+        "enableHighDpi": true,
+        "phone": {
+            "landscape": true,
+            "portrait": true,
+            "showStatusBar": true
+        },
+        "tablet": {
+            "landscape": true,
+            "portrait": true,
+            "showStatusBar": true
+        },
+        "windows": {
+            "renderingEngine": "default"
+        }
+    },
+    "environment": {
+        "QT_ANDROID_ENABLE_WORKAROUND_TO_DISABLE_PREDICTIVE_TEXT": "ON"
+    },
+    "launchUrlSchemes": [
+        "arcgis-appstudio-player",
+        "arcgis-quickcapture",
+        "arcgis-collector",
+        "arcgis-trek2there",
+        "arcgis-explorer",
+        "arcgis-navigator",
+        "arcgis-workforce",
+        "comgooglemaps",
+        "foreflightmobile",
+        "waze",
+        "bingmaps",
+        "ms-drive-to",
+        "ms-walk-to",
+        "spike-partner"
+    ],
+    "mainFile": "Survey123.qml",
+    "make": {
+        "android": {
+            "dependencies": {
+                "supportV4": true
+            }
+        },
+        "compileQml": false
+    },
+    "management": {
+        "android": {
+            "restrictionFile": "AppConfig_Android.xml"
+        },
+        "configurationSchema": "AppConfig.xml"
+    },
+    "multipleInstances": false,
+    "projectFile": "Survey123.qmlproject",
+    "properties": {
+        "backgroundColor": "#EDB14C",
+        "backgroundTextureImage": "images/brushedmetal.jpg",
+        "companyLogo": "images/logo-black.png",
+        "companyUrl": "",
+        "defaultBasemap": "",
+        "enablePortalManagement": true,
+        "fontFamily": "Helvetica",
+        "formBackgroundColor": "#f4f4f4",
+        "portalURL": "",
+        "startBackgroundColor": "#31872e",
+        "startForegroundColor": "transparent",
+        "startOverlayImage": "#00000000",
+        "startTextColor": "#ffffff",
+        "textColor": "#3c3c3c",
+        "titleBarBackgroundColor": "#EDB14C",
+        "titleBarTextColor": "#00000"
+    },
+    "resources": {
+        "appIcon": "V3_App_Icon_512_512.png",
+        "appIconBackgroundColor": "#3c8b09",
+        "ios": {
+            "appIcon": "appicon_ios.png"
+        },
+        "launchImageBackground": "New_App_Background_Image_1024x1024.png",
+        "launchImageBackgroundColor": "#ffaf2e",
+        "launchImageOverlay": "LOGO2019 ON LIGHT.png",
+        "launchImageTextColor": "#ffffff"
+    },
+    "schema": "template/appschema.json",
+    "translations": {
+        "fileName": [
+            "Survey123App",
+            "qtquickcontrols",
+            "qtbase_min"
+        ],
+        "path": "languages",
+        "translateUsageDescriptionKeys": true
+    },
+    "type": "app",
+    "urlScheme": "",
+    "usageDescriptionKeys": {
+        "bluetoothUsageDescription": "Survey123 uses Bluetooth to connect to external devices such as keyboards and GPS receivers.",
+        "cameraUsageDescription": "Survey123 uses the camera to take photos for use in surveys.",
+        "locationWhenInUseUsageDescription": "Survey123 uses your location when the app is in use to capture your current position for use in surveys.",
+        "microphoneUsageDescription": "Survey123 uses the microphone to record audio for use in surveys.",
+        "photoLibraryUsageDescription": "Survey123 uses the image library to select an image for use in surveys."
+    },
+    "version": {
+        "major": 1,
+        "micro": 1,
+        "minor": 0
+    }
+}

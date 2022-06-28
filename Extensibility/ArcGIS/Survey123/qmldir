@@ -1,0 +1,20 @@
+module ArcGIS.Survey123
+depends ArcGIS.AppFramework 1.0
+
+singleton Survey123 1.0 AppSingleton.qml
+
+AddIn 1.0 AddIn.qml
+AddInTool 1.0 AddInTool.qml
+AddInCamera 1.0 AddInCamera.qml
+AddInControl 1.0 AddInControl.qml
+AddInIndicator 1.0 AddInIndicator.qml
+AddInPage 1.0 AddInPage.qml
+AddInScanner 1.0 AddInScanner.qml
+AddInSettingsPage 1.0 AddInSettingsPage.qml
+PortalRequest 1.0 PortalRequest.qml
+LocationSensor 1.0 LocationSensor.qml
+
+internal AddInComponent AddInComponent.qml
+internal Forms Forms.qml
+internal Database Database.qml
+

@@ -1,0 +1,7 @@
+singleton ControlsSingleton 1.0 ControlsSingleton.qml
+singleton Icons 1.0 Icons.qml
+singleton Colors 1.0 Colors.qml
+singleton Units 1.0 Units.qml
+singleton StandardText 1.0 StandardText.qml
+singleton Global 1.0 Global.qml
+

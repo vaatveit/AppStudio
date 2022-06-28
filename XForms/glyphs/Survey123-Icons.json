@@ -1,0 +1,20 @@
+{
+    "circle-filled": "\\e001",
+    "circle": "\\e002",
+    "compass-north-circle-f": "\\e003",
+    "compass-north-circle": "\\e004",
+    "compass-north-f": "\\e005",
+    "compass-north": "\\e006",
+    "debug": "\\e007",
+    "satellite-0-f": "\\e008",
+    "satellite-0": "\\e009",
+    "satellite-1-f": "\\e00a",
+    "satellite-1": "\\e00b",
+    "satellite-2-f": "\\e00c",
+    "satellite-2": "\\e00d",
+    "satellite-3-f": "\\e00e",
+    "satellite-3": "\\e00f",
+    "sky-plot": "\\e010",
+    "survey123-connect": "\\e011",
+    "survey123": "\\e012"
+}
