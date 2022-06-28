@@ -38,7 +38,9 @@ HomeViewTab {
                                          ? ""
                                          : searchField.text
 
-    property bool debug: false
+    property bool debug: true
+
+    property var surveysToLoad: []
 
     //--------------------------------------------------------------------------
 
@@ -70,7 +72,8 @@ HomeViewTab {
         readSettings();
 
         if (!surveysRefresh.busy) {
-            Qt.callLater(checkOpenParameters);
+            // Qt.callLater(checkOpenParameters);
+            Qt.callLater(loadSurveys);
         }
     }
 
@@ -354,7 +357,7 @@ HomeViewTab {
             parameters.folder = Survey.kFolderInbox;
         }
 
-        selected(app.surveysFolder.filePath(surveyItem.survey), collect, -1, parameters, surveyItem);
+        //selected(app.surveysFolder.filePath(surveyItem.survey), collect, -1, parameters, surveyItem);
 
         return true;
     }
@@ -371,6 +374,37 @@ HomeViewTab {
 
         return null;
     }
+
+    function loadSurveys()
+    {
+        var surveyItem = findSurveyItem("956d41ce275a4e16b53372de674cb2e1");
+        if (!surveyItem) {
+            surveysToLoad.push(JSON.parse('{"itemID":"956d41ce275a4e16b53372de674cb2e1"}'));
+        }
+
+        surveyItem = findSurveyItem("fd2873abc2804369837fb6ccd00e9135");
+        if (!surveyItem) {
+            surveysToLoad.push(JSON.parse('{"itemID":"fd2873abc2804369837fb6ccd00e9135"}'));
+        }
+
+        surveyItem = findSurveyItem("6ce0f5a6c5c54fea81a3ca0a08ec9ad9");
+        if (!surveyItem) {
+            surveysToLoad.push(JSON.parse('{"itemID":"6ce0f5a6c5c54fea81a3ca0a08ec9ad9"}'));
+        }
+
+        surveyItem = findSurveyItem("5f2bddd5a8d24e1f8863c4c75a50b071");
+        if (!surveyItem) {
+            surveysToLoad.push(JSON.parse('{"itemID":"5f2bddd5a8d24e1f8863c4c75a50b071"}'));
+        }
+
+        var surveyToLoad = surveysToLoad.pop();
+        if (surveyToLoad)
+        {
+            processParameters(surveyToLoad);
+        }
+    }
+
+
 
     //--------------------------------------------------------------------------
 
@@ -535,7 +569,17 @@ HomeViewTab {
 
             onDownloaded: {
                 console.log(logCategory, "Downloaded completed");
-                Qt.callLater(surveysFolder.update);
+                var surveyToLoad = surveysToLoad.pop();
+                if (surveyToLoad)
+                {
+                    console.log(logCategory, "Popped: ", JSON.stringify(surveyToLoad, undefined, 2));
+                    processParameters(surveyToLoad);
+                }
+                else
+                {
+                    console.log(logCategory, "No more surveys to load");
+                    Qt.callLater(surveysFolder.update);
+                }
             }
 
             onCleared: {

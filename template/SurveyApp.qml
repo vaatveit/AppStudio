@@ -174,8 +174,6 @@ App {
             Qt.callLater(() => { app.initializing = false; });
         }
 
-        // CHANGE THIS SO IT DOESN'T LOAD THE SURVEY!
-
         if (portal.isOnline && portal.canAutoSignIn()) {
             portal.connect(
                         function () {
@@ -193,7 +191,8 @@ App {
             clearInitializing();
         }
 
-        Qt.callLater(requestCameraPermission);
+        // This opens a survey.  Defer this until after login.
+        // Qt.callLater(requestCameraPermission);
     }
 
     //--------------------------------------------------------------------------

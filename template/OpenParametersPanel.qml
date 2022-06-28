@@ -362,6 +362,7 @@ ColumnLayout {
             debug: debug
 
             onSucceeded: {
+                console.log("onSucceeded");
                 downloaded();
                 parameters = null;
             }

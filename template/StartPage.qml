@@ -201,7 +201,7 @@ Rectangle {
             Layout.fillWidth: true
 
             //visible: !!text
-            text: portal.user ? portal.user.fullName : ""
+            text: portal.user ? "Welcome " + portal.user.fullName : "Welcome to the Global CHE Network"
             color: textColor
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -231,37 +231,66 @@ Rectangle {
             }
         }
 
-        //StartButton {
-        //    Layout.fillWidth: true
-//
-        //    visible: ready && portal.isOnline && !portal.signedIn && !portal.isSigningIn
-        //    text: qsTr("Sign in with <b>%1</b>").arg(portal.name)
-        //    reverseColor: true
-        //    showBorder: false
-//
-        //    onClicked: {
-        //        if (portal.signedIn) {
-        //            portal.signOut();
-        //        }
-        //        portal.signIn(undefined, true);
-        //    }
-       // }
+        TextField {
+            visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+            id: userText
+            color: "#edb14c"
+            placeholderText: "Account"
+            placeholderTextColor: "grey"
+            background: Rectangle {
+                color: "#000000"
+                radius: 4
+            }
+            //anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
+            width: parent.width * 0.8
+            leftPadding: 10.0
+            rightPadding: 10.0
+            font {
+                pointSize: 15
+            }
+        }
 
-        //StartButton {
-        //    Layout.fillWidth: true
+        TextField {
+            visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+            id: pwdText
+            color: "#edb14c"
+            placeholderText: "Password"
+            placeholderTextColor: "grey"
+            background: Rectangle {
+                color: "#000000"
+                radius: 4
+            }
+            //anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
+            width: parent.width * 0.8
+            leftPadding: 10.0
+            rightPadding: 10.0
+            verticalAlignment: TextInput.AlignVCenter
+            echoMode: TextInput.Password
+            font {
+                pointSize: 15
+            }
+        }
 
-        //    visible: ready && portal.managementEnabled && portal.isOnline && !portal.signedIn && !portal.isSigningIn
-        //    text: qsTr("Manage ArcGIS connections")
+        Button {
+            id: loginButton
+            text: "Login"
+            visible: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userText.text.length > 0 && pwdText.text.length > 0
+            background: Rectangle {
+                color: "#edb14c"
+                radius: 4
+            }
+            width: parent.width * 0.4
+            // anchors.horizontalCenter: parent.horizontalCenter
+            Layout.alignment: Qt.AlignHCenter
+            onClicked:{
+                console.log("login", userText.text, pwdText.text);
+                portal.setCredentials(userText.text, pwdText.text, true);
+            }
+        }
 
-        //    palette {
-        //        button: "transparent"
-        //    }
-
-        //    onClicked: {
-        //        stackView.push(portalSettingsPage);
-        //    }
-        //}
-
+        /*
         StartButton {
             Layout.fillWidth: true
 
@@ -277,6 +306,7 @@ Rectangle {
                 startAnonymous();
             }
         }
+        */
 
         Glyph {
             id: signingInImage

@@ -300,6 +300,7 @@ Item {
         method: "GET"
 
         onSuccess: {
+            console.log("PortalRequest.downloaded")
             downloaded(responsePath);
         }
 
