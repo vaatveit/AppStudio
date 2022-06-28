@@ -310,7 +310,7 @@ Item {
     Connections {
         target: positionSource
 
-        onActiveChanged: {
+        function onActiveChanged() {
             console.log(logCategory, "positionSource.active:", positionSource.active);
 
             // require warm-up after activation
@@ -320,7 +320,7 @@ Item {
             }
         }
 
-        onPositionChanged: {
+        function onPositionChanged() {
             if (referenceCount <= 0) {
                 // stale positions coming through after positionSource has been deactivated
                 console.warn(logCategory, "Position changed when inactive:", referenceCount, "coordinate:", positionSource.position.coordinate);
@@ -359,7 +359,7 @@ Item {
             }
         }
 
-        onSourceErrorChanged: {
+        function onSourceErrorChanged() {
             if (referenceCount > 0) {
                 console.error(logCategory, "Positioning Source Error:", positionSource.sourceError);
 

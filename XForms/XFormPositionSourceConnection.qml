@@ -87,7 +87,7 @@ Item {
     Connections {
         target: positionSourceManager
 
-        onNewPosition: {
+        function onNewPosition() {
             if (active) {
                 positionSourceConnection.errorString = "";
 
@@ -97,7 +97,7 @@ Item {
             }
         }
 
-        onTcpError: {
+        function onTcpError() {
             if (active) {
                 positionSourceConnection.errorString = errorString;
 
@@ -108,7 +108,7 @@ Item {
             }
         }
 
-        onDeviceError: {
+        function onDeviceError() {
             if (active) {
                 positionSourceConnection.errorString = errorString;
 
@@ -119,7 +119,7 @@ Item {
             }
         }
 
-        onNmeaLogFileError: {
+        function onNmeaLogFileError() {
             if (active) {
                 positionSourceConnection.errorString = errorString;
 
@@ -130,7 +130,7 @@ Item {
             }
         }
 
-        onPositionSourceError: {
+        function onPositionSourceError() {
             if (active) {
                 positionSourceConnection.errorString = errorString;
 

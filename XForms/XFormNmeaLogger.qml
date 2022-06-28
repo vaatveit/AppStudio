@@ -98,7 +98,7 @@ Item {
     Connections {
         target: nmeaSource
 
-        onReceivedNmeaData: {
+        function onReceivedNmeaData() {
             if (allowLogging && isRecording && !isPaused) {
                 writeLog(nmeaLogFile, nmeaSource.receivedSentence.trim());
             }

@@ -37,7 +37,7 @@ MapSourcesManager {
     Connections {
         target: portal
 
-        onSignedInChanged: {
+        function onSignedInChanged() {
             if (portal.signedIn) {
                 var portalId = Qt.md5(portal.portalUrl);
                 cacheFileName = "%1-%2.json".arg(portalId).arg(portal.user.username);

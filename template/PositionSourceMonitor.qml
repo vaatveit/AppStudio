@@ -114,7 +114,7 @@ Item {
         target: nmeaSource
         enabled: active && positionSourceManager.isGNSS
 
-        onReceivedNmeaData: {
+        function onReceivedNmeaData() {
             dataReceivedTime = (new Date()).valueOf();
         }
     }
@@ -126,7 +126,7 @@ Item {
 
         target: positionSourceManager
 
-        onNewPosition: {
+        function onNewPosition() {
             positionReceivedTime = positionSourceManager.positionTimestamp
 
             if (!positionSourceManager.isGNSS || position.fixTypeValid && position.fixType > 0) {
@@ -139,7 +139,7 @@ Item {
             newPosition(position);
         }
 
-        onIsConnectedChanged: {
+        function onIsConnectedChanged() {
             if (positionSourceManager.isGNSS) {
                 if (positionSourceManager.isConnected) {
                     alert(AppAlert.AlertType.Connected);
@@ -150,12 +150,12 @@ Item {
             }
         }
 
-        onTcpError: {
+        function onTcpError() {
             positionIsCurrent = false;
             showConnectionError(kUnableToConnect, kTcpConnectionError.arg(positionSourceManager.name), positionSourceManager.startPositionSource);
         }
 
-        onDeviceError: {
+        function onDeviceError() {
             positionIsCurrent = false;
             if (positionSourceManager.isSerialPort) {
                 showConnectionError(kUnableToConnect, kSerialportConnectionError.arg(positionSourceManager.name), positionSourceManager.startPositionSource);
@@ -164,17 +164,17 @@ Item {
             }
         }
 
-        onNmeaLogFileError: {
+        function onNmeaLogFileError() {
             positionIsCurrent = false;
             showConnectionError(kUnableToConnect, kNmeaLogFileError.arg(positionSourceManager.name), positionSourceManager.startPositionSource);
         }
 
-        onPositionSourceError: {
+        function onPositionSourceError() {
             positionIsCurrent = false;
             showConnectionError(kProviderUnavailable, kInternalLocationProviderError, positionSourceManager.startPositionSource);
         }
 
-        onDiscoveryAgentError: {
+        function onDiscoveryAgentError() {
             showConnectionError(kDiscoveryFailed, kDiscoveryAgentError, controller.startDiscoveryAgent);
         }
     }

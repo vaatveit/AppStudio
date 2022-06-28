@@ -81,7 +81,7 @@ ListModel {
     readonly property Connections _connections: Connections {
         target: addInsFolder
 
-        onAddInsChanged: {
+        function onAddInsChanged() {
             Qt.callLater(addInsModel.update);
         }
     }

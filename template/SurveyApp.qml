@@ -14,12 +14,12 @@
  *
  */
 
-import QtQml 2.12
-import QtQuick 2.12
-import QtQuick.Controls 2.12
-import QtQuick.Controls 1.2 as QC1
+import QtQml 2.15
+import QtQuick 2.15
+import QtQuick.Controls 2.15
+import QtQuick.Controls 1.4 as QC1
 import QtQuick.Dialogs 1.2
-import QtQuick.Window 2.12
+import QtQuick.Window 2.15
 
 import ArcGIS.AppFramework 1.0
 import ArcGIS.AppFramework.Platform 1.0
@@ -174,6 +174,8 @@ App {
             Qt.callLater(() => { app.initializing = false; });
         }
 
+        // CHANGE THIS SO IT DOESN'T LOAD THE SURVEY!
+
         if (portal.isOnline && portal.canAutoSignIn()) {
             portal.connect(
                         function () {
@@ -241,13 +243,16 @@ App {
 
     //--------------------------------------------------------------------------
 
-    onLocaleChanged: {
-        console.log(logCategory, "App locale changed to:", locale.name);
+    onLocaleChanged: {      
 
-        if (locale.name !== localeProperties.kNeutralLocale.name) {
-            console.log("Loading translations for :", locale.name);
-            AppFramework.loadTranslator(app.info.json.translations, app.folder.path, locale.name);
-        }
+        // Error: A QmlLoggingCatgory was provided without a valid name
+        // console.log(logCategory, "App locale changed to:", locale.name);
+
+        // This leads to binding loop errors
+        //if (locale.name !== localeProperties.kNeutralLocale.name) {
+        //    console.log("Loading translations for :", locale.name);
+        //    AppFramework.loadTranslator(app.info.json.translations, app.folder.path, locale.name);
+        //}
     }
 
     //--------------------------------------------------------------------------
@@ -1073,7 +1078,7 @@ App {
     Connections {
         target: Qt.application
 
-        onStateChanged: {
+        function onStateChanged() {
             switch (Qt.application.state) {
             case Qt.ApplicationActive:
                 if (positionSourceManager.active && positionSourceManager.isGNSS && !positionSourceManager.isConnecting) {

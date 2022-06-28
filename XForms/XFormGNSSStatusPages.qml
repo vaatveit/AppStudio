@@ -108,7 +108,7 @@ Item {
 
         target: gnssStatusPages.positionSourceManager.logger
 
-        onAlert: {
+        function onAlert() {
             gnssStatusPages.alert(alertType);
         }
     }

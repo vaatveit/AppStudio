@@ -271,7 +271,7 @@ Item {
     Connections {
         target: nmeaSource
 
-        onErrorChanged: {
+        function onErrorChanged() {
             if (useFile) {
                 console.log("NMEA log file error:", nmeaSource.error)
 
@@ -292,7 +292,7 @@ Item {
     Connections {
         target: tcpSocket
 
-        onErrorChanged: {
+        function onErrorChanged() {
             if (useTCPConnection) {
                 console.log("TCP connection error:", tcpSocket.error, tcpSocket.errorString)
 
@@ -342,15 +342,15 @@ Item {
     Connections {
         target: discoveryAgent
 
-        onDiscoverDevicesCompleted: {
+        function onDiscoverDevicesCompleted() {
             console.log("Device discovery completed");
         }
 
-        onRunningChanged: {
+        function onRunningChanged() {
             console.log("DeviceDiscoveryAgent running", discoveryAgent.running);
         }
 
-        onErrorChanged: {
+        function onErrorChanged() {
             console.log("Device discovery agent error:", discoveryAgent.error)
 
             if (onSettingsPage) {
@@ -358,7 +358,7 @@ Item {
             }
         }
 
-        onDeviceDiscovered: {
+        function onDeviceDiscovered() {
             if (discoveryAgent.deviceFilter(device)) {
                 console.log("Device discovered - Name:", device.name, "Type:", device.deviceType);
             }

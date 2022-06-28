@@ -45,7 +45,7 @@ Item {
     Connections {
         target: secureStorage
 
-        onError: {
+        function onError() {
             console.error(logCategory, "SecureStorage error:", errorMessage);
         }
     }

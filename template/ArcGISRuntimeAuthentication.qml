@@ -100,7 +100,7 @@ Item {
         target: AuthenticationManager
         enabled: runtimeAuthentication.enabled
 
-        onAuthenticationChallenge: {
+        function onAuthenticationChallenge() {
             if (debug) {
                 console.log(logCategory, "onAuthenticationChallenge -")
                 console.log(logCategory, " - authenticatingHost:", challenge.authenticatingHost );
@@ -160,7 +160,7 @@ Item {
     Connections {
         target: appPortal
 
-        onSignedInChanged: {
+        function onSignedInChanged() {
             if (appPortal.signedIn && appPortal.isOnline) {
                 licenseUser();
             }

@@ -181,11 +181,11 @@ Item {
     Connections {
         target: ManagedAppConfiguration
 
-        onPolicySettingsChanged : {
+        function onPolicySettingsChanged() {
             console.log("ManagedAppConfiguration settings:", JSON.stringify(ManagedAppConfiguration.policySettings, undefined, 2));
         }
 
-        onPolicyDefaultsChanged : {
+        function onPolicyDefaultsChanged() {
             console.log("ManagedAppConfiguration defaults:", JSON.stringify(ManagedAppConfiguration.policyDefaults, undefined, 2));
         }
     }

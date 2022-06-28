@@ -16,11 +16,15 @@
 
 import QtQml 2.15
 import QtQuick 2.15
+import QtQuick.Controls 2.15
 import QtQuick.Controls 1.4 as QC1
 import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.0
 
 import ArcGIS.AppFramework 1.0
+import Esri.ArcGISRuntime 100.13
+import Esri.ArcGISRuntime.Toolkit 100.13
+
 
 import "../Controls"
 import "../Controls/Singletons"
@@ -87,7 +91,8 @@ Rectangle {
     Timer {
         id: signedInTimer
 
-        interval: 1500
+        // Short interval (1500) causes problems debugging.
+        interval: 15000000
 
         onTriggered: {
             Qt.callLater(signedIn);
@@ -149,7 +154,9 @@ Rectangle {
 
         width: Math.min(parent.width, 200 * AppFramework.displayScaleFactor)
 
-        source: overlaySource
+        //ReferenceError: overlaySource is not defined"
+        //source: overlaySource
+
         color: textColor
         cache: false
         mipmap: true
@@ -343,7 +350,7 @@ Rectangle {
     Connections {
         target: portal
 
-        onSignedInChanged: {
+        function onSignedInChanged() {
             if (portal.signedIn) {
                 page.signedIn();
             }

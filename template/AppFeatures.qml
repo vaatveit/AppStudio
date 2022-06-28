@@ -37,12 +37,13 @@ QtObject {
     property bool enableSxS: false
     property bool enableGalleryFilter: false
 
+    // ReferenceError: galleryFilter is not defined
     readonly property bool beta: addIns
                                  || itemsetsDatabase
                                  || asyncFormLoader
                                  || enableCompass
                                  || enableSxS
-                                 || galleryFilter
+                                 // || galleryFilter
 
     //--------------------------------------------------------------------------
 

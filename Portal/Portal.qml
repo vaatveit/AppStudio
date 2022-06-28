@@ -383,7 +383,7 @@ Item {
     Connections {
         target: app
 
-        onOpenUrl: {
+        function onOpenUrl(url) {
             processApprovalUrl(url);
         }
     }
@@ -393,7 +393,7 @@ Item {
     Connections {
         target: Qt.application
 
-        onStateChanged: {
+        function onStateChanged() {
             console.log(logCategory, "Application state changed:", Qt.application.state);
             switch (Qt.application.state) {
             case Qt.ApplicationActive:
@@ -1986,7 +1986,7 @@ Item {
     Connections {
         target: Networking
 
-        onAuthenticationChallenge: {
+        function onAuthenticationChallenge() {
             if (debug) {
                 console.log(logCategory, "onAuthenticationChallenge:", authChallenge.authenticationChallengeType, "requestUrl:", authChallenge.requestUrl);
             }
