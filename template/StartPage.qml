@@ -45,6 +45,7 @@ Rectangle {
     property color foregroundColor: app.info.propertyValue("startForegroundColor", "transparent")
 
     property url backgroundSource: app.folder.fileUrl(app.info.propertyValue("startBackgroundImage", "images/start-background.jpg"))
+    // Overlay image fails to load when specified below in StyledImage
     //property url overlaySource: app.folder.fileUrl(app.info.propertyValue("startOverlayImage", "images/start-overlay.svg"))
     //property url footerSource: app.folder.fileUrl(app.info.propertyValue("startFooterImage", "images/start-footer.svg"))
     property url footerSource: app.folder.fileUrl(app.info.propertyValue("startFooterImage", "images/URL_TAG_ON_LIGHT.png"))
@@ -109,10 +110,45 @@ Rectangle {
 
     //--------------------------------------------------------------------------
 
+    Rectangle {
+        id: welcomeBox
+        color: "#000000"
+        anchors {
+            top: parent.top
+            left: parent.left
+            right: parent.right
+        }
+        height: welcomeText.height * 1.2
+
+        AppText {
+            id: welcomeText
+            Layout.fillWidth: true
+            text: portal.user ? "Welcome " + portal.user.fullName : "Welcome to the Global CHE Network"
+            color: "#edb14c"
+            horizontalAlignment: Text.AlignHCenter
+            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+            font {
+                pointSize: 15
+            }
+            width: parent.width
+            anchors {
+                horizontalCenter: welcomeBox.horizontalCenter
+                verticalCenter: welcomeBox.verticalCenter
+            }
+        }
+    }
+
+
+
     Image {
         id: backgroundImage
 
-        anchors.fill: parent
+        anchors {
+            top: welcomeBox.bottom
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
 
         source: backgroundSource
         cache: false
@@ -142,8 +178,11 @@ Rectangle {
         color: AppFramework.alphaColor(Qt.lighter(backgroundColor, 1.5), 0.3)
     }
 
+
+
     //--------------------------------------------------------------------------
 
+    /*
     StyledImage {
         anchors {
             horizontalCenter: parent.horizontalCenter
@@ -154,8 +193,8 @@ Rectangle {
 
         width: Math.min(parent.width, 200 * AppFramework.displayScaleFactor)
 
-        //ReferenceError: overlaySource is not defined"
-        //source: overlaySource
+        // Image given above fails to load
+        source: overlaySource
 
         color: textColor
         cache: false
@@ -176,182 +215,340 @@ Rectangle {
             }
         }
     }
+    */
 
     Rectangle {
         anchors.fill: parent
         color: foregroundColor
     }
 
-    //--------------------------------------------------------------------------
-
-    ColumnLayout {
-        id: buttonsLayout
-
-        anchors {
-            horizontalCenter: parent.horizontalCenter
-            bottom: parent.bottom
-            bottomMargin: 10 * AppFramework.displayScaleFactor
-        }
-
-        width: Math.min(parent.width * 0.85, 350 * AppFramework.displayScaleFactor)
-
-        spacing: 10 * AppFramework.displayScaleFactor
-
-        AppText {
-            Layout.fillWidth: true
-
-            //visible: !!text
-            text: portal.user ? "Welcome " + portal.user.fullName : "Welcome to the Global CHE Network"
-            color: textColor
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+    TabBar {
+        id: startPageTabs
+        anchors.fill: backgroundImage
+        background: null
+        TabButton {
+            id: loginTabButton
+            text: qsTr("Login")
+            background: null
+            contentItem: Text {
+                text: loginTabButton.text
+                font: loginTabButton.font
+                color: startPageTabs.currentIndex === 0 ?"#ffffff" : "#cccccc"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
+            }
             font {
                 pointSize: 15
             }
         }
-
-        Glyph {
-            Layout.alignment: Qt.AlignHCenter
-
-            visible: !portal.isOnline
-            name: "offline"
-            color: textColor
-        }
-
-        AppText {
-            Layout.fillWidth: true
-
-            visible: !portal.isOnline
-            text: qsTr("Your device is offline")
-            color: textColor
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+        TabButton {
+            id: registerTabButton
+            text: qsTr("Register")
+            background: null
+            contentItem: Text {
+                text: registerTabButton.text
+                font: registerTabButton.font
+                color: startPageTabs.currentIndex === 1 ?"#ffffff" : "#cccccc"
+                horizontalAlignment: Text.AlignHCenter
+                verticalAlignment: Text.AlignVCenter
+                elide: Text.ElideRight
+            }
             font {
                 pointSize: 15
             }
-        }
-
-        TextField {
-            visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
-            id: userText
-            color: "#edb14c"
-            placeholderText: "Account"
-            placeholderTextColor: "grey"
-            background: Rectangle {
-                color: "#000000"
-                radius: 4
-            }
-            //anchors.horizontalCenter: parent.horizontalCenter
-            Layout.alignment: Qt.AlignHCenter
-            width: parent.width * 0.8
-            leftPadding: 10.0
-            rightPadding: 10.0
-            font {
-                pointSize: 15
-            }
-        }
-
-        TextField {
-            visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
-            id: pwdText
-            color: "#edb14c"
-            placeholderText: "Password"
-            placeholderTextColor: "grey"
-            background: Rectangle {
-                color: "#000000"
-                radius: 4
-            }
-            //anchors.horizontalCenter: parent.horizontalCenter
-            Layout.alignment: Qt.AlignHCenter
-            width: parent.width * 0.8
-            leftPadding: 10.0
-            rightPadding: 10.0
-            verticalAlignment: TextInput.AlignVCenter
-            echoMode: TextInput.Password
-            font {
-                pointSize: 15
-            }
-        }
-
-        Button {
-            id: loginButton
-            text: "Login"
-            visible: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userText.text.length > 0 && pwdText.text.length > 0
-            background: Rectangle {
-                color: "#edb14c"
-                radius: 4
-            }
-            width: parent.width * 0.4
-            // anchors.horizontalCenter: parent.horizontalCenter
-            Layout.alignment: Qt.AlignHCenter
-            onClicked:{
-                console.log("login", userText.text, pwdText.text);
-                portal.setCredentials(userText.text, pwdText.text, true);
-            }
-        }
-
-        /*
-        StartButton {
-            Layout.fillWidth: true
-
-            visible: ready && !portal.signedIn && !portal.isSigningIn && !app.config.requireSignIn
-            text: qsTr("Click to Continue") // ")
-            showBorder: false
-
-            palette {
-                button: "transparent"
-            }
-
-            onClicked: {
-                startAnonymous();
-            }
-        }
-        */
-
-        Glyph {
-            id: signingInImage
-
-            Layout.alignment: Qt.AlignHCenter
-
-            visible: portal.isConnecting || portal.isSigningIn
-            name: portal.isConnecting
-                  ? portal.isPortal
-                    ? "portal"
-                    : "arcgis-online"
-            : "sign-in"
-            color: textColor
-
-            PulseAnimation {
-                target: signingInImage
-                running: signingInImage.visible
-            }
-        }
-
-        AppText {
-            Layout.fillWidth: true
-
-            visible: signingInImage.visible
-            text: qsTr("Signing in to <b>%1</b>").arg(portal.name)
-            color: textColor
-            horizontalAlignment: Text.AlignHCenter
-            wrapMode: Text.WrapAtWordBoundaryOrAnywhere
-            font {
-                pointSize: 15
-            }
-        }
-
-        StyledImage {
-            Layout.topMargin: 25 * AppFramework.displayScaleFactor
-            Layout.fillWidth: true
-            Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
-
-            source: footerSource
-            color: textColor
-            opacity: 0.5
-            cache: false
-            mipmap: true
         }
     }
+
+    StackLayout {
+        anchors.fill: backgroundImage
+        anchors.topMargin: startPageTabs.height
+
+        currentIndex: startPageTabs.currentIndex
+
+        ColumnLayout {
+            id: loginTab
+
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                bottom: parent.bottom
+                bottomMargin: 50 * AppFramework.displayScaleFactor
+            }
+
+            spacing: 10 * AppFramework.displayScaleFactor
+
+            Glyph {
+                Layout.alignment: Qt.AlignHCenter
+
+                visible: !portal.isOnline
+                name: "offline"
+                color: textColor
+            }
+
+            AppText {
+                Layout.fillWidth: true
+
+                visible: !portal.isOnline
+                text: qsTr("Your device is offline")
+                color: textColor
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font {
+                    pointSize: 15
+                }
+            }
+
+            TextField {
+                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+                id: userText
+                color: "#edb14c"
+                placeholderText: "Account"
+                placeholderTextColor: "grey"
+                background: Rectangle {
+                    color: "#000000"
+                    radius: 4
+                }
+                //anchors.horizontalCenter: parent.horizontalCenter
+                Layout.alignment: Qt.AlignHCenter
+                width: parent.width * 0.8
+                leftPadding: 10.0
+                rightPadding: 10.0
+                font {
+                    pointSize: 15
+                }
+            }
+
+            TextField {
+                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+                id: pwdText
+                color: "#edb14c"
+                placeholderText: "Password"
+                placeholderTextColor: "grey"
+                background: Rectangle {
+                    color: "#000000"
+                    radius: 4
+                }
+                //anchors.horizontalCenter: parent.horizontalCenter
+                Layout.alignment: Qt.AlignHCenter
+                width: parent.width * 0.8
+                leftPadding: 10.0
+                rightPadding: 10.0
+                verticalAlignment: TextInput.AlignVCenter
+                echoMode: TextInput.Password
+                font {
+                    pointSize: 15
+                }
+            }
+
+            Button {
+                id: loginButton
+                text: "Login"
+
+                contentItem: Text {
+                    text: loginButton.text
+                    font: loginButton.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                enabled: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userText.text.length > 0 && pwdText.text.length > 0
+                background: Rectangle {
+                    color: "#edb14c"
+                    radius: 4
+                }
+                width: parent.width * 0.4
+                Layout.alignment: Qt.AlignHCenter
+                font {
+                    pointSize: 15
+                }
+                onClicked:{
+                    console.log("login", userText.text, pwdText.text);
+                    portal.setCredentials(userText.text, pwdText.text, true);
+                }
+            }
+
+            Button {
+                id: forgotButton
+                text: "Forgot Password?"
+
+                contentItem: Text {
+                    text: forgotButton.text
+                    font: forgotButton.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                enabled: true
+                background: Rectangle {
+                    color: "#000000"
+                    radius: 4
+                }
+                width: parent.width * 0.4
+                Layout.alignment: Qt.AlignHCenter
+                onClicked:{
+                    console.log("forgot password");
+                    // do something
+                }
+            }
+
+            Glyph {
+                id: signingInImage
+
+                Layout.alignment: Qt.AlignHCenter
+
+                visible: portal.isConnecting || portal.isSigningIn
+                name: portal.isConnecting
+                      ? portal.isPortal
+                        ? "portal"
+                        : "arcgis-online"
+                : "sign-in"
+                color: textColor
+
+                PulseAnimation {
+                    target: signingInImage
+                    running: signingInImage.visible
+                }
+            }
+
+            AppText {
+                Layout.fillWidth: true
+
+                visible: signingInImage.visible
+                text: qsTr("Signing in to <b>%1</b>").arg(portal.name)
+                color: textColor
+                horizontalAlignment: Text.AlignHCenter
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font {
+                    pointSize: 15
+                }
+            }
+
+            StyledImage {
+                Layout.topMargin: 25 * AppFramework.displayScaleFactor
+                Layout.fillWidth: true
+                Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
+
+                source: footerSource
+                color: textColor
+                opacity: 0.5
+                cache: false
+                mipmap: true
+            }
+        }
+
+        ColumnLayout {
+            id: registerTab
+
+            Layout.fillWidth: true
+            Layout.fillHeight: true
+
+            anchors {
+                horizontalCenter: parent.horizontalCenter
+                bottom: parent.bottom
+                bottomMargin: 50 * AppFramework.displayScaleFactor
+            }
+
+            spacing: 10 * AppFramework.displayScaleFactor
+
+            TextField {
+                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+                id: userTextNew
+                color: "#edb14c"
+                placeholderText: "Account"
+                placeholderTextColor: "grey"
+                background: Rectangle {
+                    color: "#000000"
+                    radius: 4
+                }
+                //anchors.horizontalCenter: parent.horizontalCenter
+                Layout.alignment: Qt.AlignHCenter
+                width: parent.width * 0.8
+                leftPadding: 10.0
+                rightPadding: 10.0
+                font {
+                    pointSize: 15
+                }
+            }
+
+            TextField {
+                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
+                id: pwdTextNew
+                color: "#edb14c"
+                placeholderText: "Password"
+                placeholderTextColor: "grey"
+                background: Rectangle {
+                    color: "#000000"
+                    radius: 4
+                }
+                //anchors.horizontalCenter: parent.horizontalCenter
+                Layout.alignment: Qt.AlignHCenter
+                width: parent.width * 0.8
+                leftPadding: 10.0
+                rightPadding: 10.0
+                verticalAlignment: TextInput.AlignVCenter
+                echoMode: TextInput.Password
+                font {
+                    pointSize: 15
+                }
+            }
+
+            Button {
+                id: registerButton
+                text: "Register"
+
+                contentItem: Text {
+                    text: registerButton.text
+                    font: registerButton.font
+                    opacity: enabled ? 1.0 : 0.3
+                    color: "#ffffff"
+                    horizontalAlignment: Text.AlignHCenter
+                    verticalAlignment: Text.AlignVCenter
+                    elide: Text.ElideRight
+                }
+
+                enabled: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userTextNew.text.length > 0 && pwdTextNew.text.length > 0
+                background: Rectangle {
+                    color: "#edb14c"
+                    radius: 4
+                }
+                width: parent.width * 0.4
+                Layout.alignment: Qt.AlignHCenter
+                font {
+                    pointSize: 15
+                }
+                onClicked:{
+                    console.log("register", userTextNew.text, pwdTextNew.text);
+                    // HOW TO SUBMIT REGISTRATION???
+                }
+            }
+
+            StyledImage {
+                Layout.topMargin: 25 * AppFramework.displayScaleFactor
+                Layout.fillWidth: true
+                Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
+
+                source: footerSource
+                color: textColor
+                opacity: 0.5
+                cache: false
+                mipmap: true
+            }
+
+        }
+    }
+
+
+    //--------------------------------------------------------------------------
+
 
     //--------------------------------------------------------------------------
 
@@ -365,7 +562,7 @@ Rectangle {
         }
 
         enabled: false
-        visible: enabled || overlayMouseArea.containsMouse
+        visible: enabled // || overlayMouseArea.containsMouse
         text: app.info.version + app.features.buildTypeSuffix
         color: textColor
         horizontalAlignment: Text.AlignHCenter

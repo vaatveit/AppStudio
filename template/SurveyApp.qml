@@ -854,7 +854,7 @@ App {
 
         onConnecting: {
             if (debug) {
-                console.log(logCategory, "connecting:", request.readyState);
+                console.log("connecting:", request.readyState);
             }
 
             switch (request.readyState) {
