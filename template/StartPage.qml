@@ -138,10 +138,11 @@ Rectangle {
         }
     }
 
-
-
     Image {
         id: backgroundImage
+
+        width: parent.width
+        height: parent.height - welcomeBox.height
 
         anchors {
             top: welcomeBox.bottom
@@ -178,6 +179,23 @@ Rectangle {
         color: AppFramework.alphaColor(Qt.lighter(backgroundColor, 1.5), 0.3)
     }
 
+    StyledImage {
+        anchors {
+            bottom: parent.bottom
+            left: parent.left
+            right: parent.right
+        }
+
+        Layout.topMargin: 25 * AppFramework.displayScaleFactor
+        Layout.fillWidth: true
+        Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
+
+        source: footerSource
+        color: textColor
+        opacity: 0.5
+        cache: false
+        mipmap: true
+    }
 
 
     //--------------------------------------------------------------------------
@@ -217,14 +235,14 @@ Rectangle {
     }
     */
 
-    Rectangle {
-        anchors.fill: parent
-        color: foregroundColor
-    }
 
     TabBar {
         id: startPageTabs
-        anchors.fill: backgroundImage
+        // anchors.fill: backgroundImage
+
+        width: parent.width
+        anchors.top: welcomeBox.bottom
+
         background: null
         TabButton {
             id: loginTabButton
@@ -261,8 +279,8 @@ Rectangle {
     }
 
     StackLayout {
-        anchors.fill: backgroundImage
-        anchors.topMargin: startPageTabs.height
+        width: backgroundImage.width
+        anchors.top: startPageTabs.bottom
 
         currentIndex: startPageTabs.currentIndex
 
@@ -271,12 +289,7 @@ Rectangle {
 
             Layout.fillWidth: true
             Layout.fillHeight: true
-
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom
-                bottomMargin: 50 * AppFramework.displayScaleFactor
-            }
+            Layout.alignment: Qt.AlignHCenter
 
             spacing: 10 * AppFramework.displayScaleFactor
 
@@ -302,6 +315,7 @@ Rectangle {
             }
 
             TextField {
+                Layout.preferredWidth: 0.8 * parent.width
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: userText
                 color: "#edb14c"
@@ -322,6 +336,7 @@ Rectangle {
             }
 
             TextField {
+                Layout.preferredWidth: 0.8 * parent.width
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: pwdText
                 color: "#edb14c"
@@ -357,7 +372,7 @@ Rectangle {
                     elide: Text.ElideRight
                 }
 
-                enabled: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userText.text.length > 0 && pwdText.text.length > 0
+                enabled: !portal.user && userText.text.length > 0 && pwdText.text.length > 0
                 background: Rectangle {
                     color: "#edb14c"
                     radius: 4
@@ -432,16 +447,12 @@ Rectangle {
                 }
             }
 
-            StyledImage {
+            // This seems necessary to correctly center the elements above
+            Rectangle {
                 Layout.topMargin: 25 * AppFramework.displayScaleFactor
                 Layout.fillWidth: true
                 Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
-
-                source: footerSource
-                color: textColor
-                opacity: 0.5
-                cache: false
-                mipmap: true
+                color: "transparent"
             }
         }
 
@@ -451,15 +462,10 @@ Rectangle {
             Layout.fillWidth: true
             Layout.fillHeight: true
 
-            anchors {
-                horizontalCenter: parent.horizontalCenter
-                bottom: parent.bottom
-                bottomMargin: 50 * AppFramework.displayScaleFactor
-            }
-
             spacing: 10 * AppFramework.displayScaleFactor
 
             TextField {
+                Layout.preferredWidth: 0.8 * parent.width
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: userTextNew
                 color: "#edb14c"
@@ -480,6 +486,7 @@ Rectangle {
             }
 
             TextField {
+                Layout.preferredWidth: 0.8 * parent.width
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: pwdTextNew
                 color: "#edb14c"
@@ -531,18 +538,13 @@ Rectangle {
                 }
             }
 
-            StyledImage {
+            // This seems necessary to correctly center the elements above
+            Rectangle {
                 Layout.topMargin: 25 * AppFramework.displayScaleFactor
                 Layout.fillWidth: true
                 Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
-
-                source: footerSource
-                color: textColor
-                opacity: 0.5
-                cache: false
-                mipmap: true
+                color: "transparent"
             }
-
         }
     }
 
