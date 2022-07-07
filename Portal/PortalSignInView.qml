@@ -62,7 +62,7 @@ Rectangle {
     Connections {
         target: portal
 
-        onCanPublishChanged: {
+        function onCanPublishChanged() {
             if(!portal.clientMode) {
                 if(portal.canPublish) {
                     accepted()
@@ -70,7 +70,7 @@ Rectangle {
             }
         }
 
-        onSignedInChanged: {
+        function onSignedInChanged() {
             //console.log("PortalSignInView::onSignedInChange: ", portal.info, portal.user, portal.token);
             if (portal.signedIn && portal.user && (portal.user.orgId || portal.isPortal)) {
                 if(portal.clientMode) {
@@ -79,7 +79,7 @@ Rectangle {
             }
         }
 
-        onError: {
+        function onError() {
             //console.log("PortalSignInView::onError: ", error, portal.user.orgId, portal.signedIn, portal.token);
             portal.busy = false;
             signInItem.visible = !useOAuth;

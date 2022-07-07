@@ -411,7 +411,7 @@ Rectangle {
                 Layout.alignment: Qt.AlignHCenter
                 onClicked:{
                     console.log("forgot password");
-                    // do something
+                    stackView.push(forgotPasswordPage);
                 }
             }
 
@@ -605,4 +605,15 @@ Rectangle {
     }
 
     //--------------------------------------------------------------------------
+
+    Component {
+        id: forgotPasswordPage
+
+        ForgotPasswordPage {
+            onClose: {
+                stackView.pop()
+            }
+        }
+    }
+
 }

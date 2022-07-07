@@ -61,7 +61,7 @@
         },
         "arcgisRuntimeExtensionsLicense": "",
         "arcgisRuntimeLicense": "runtimelite,1000,rud2165425606,none,B5H93PJPXJK94P7EJ215",
-        "clientId": "",
+        "clientId": "me3bKdhpRB3XcUZR",
         "ios": {
             "bundleId": "",
             "codeSignIdentity": ""
@@ -204,7 +204,7 @@
     },
     "version": {
         "major": 1,
-        "micro": 4,
+        "micro": 5,
         "minor": 0
     }
 }
