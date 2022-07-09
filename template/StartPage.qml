@@ -22,6 +22,8 @@ import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.0
 
 import ArcGIS.AppFramework 1.0
+import ArcGIS.AppFramework.InterAppCommunication 1.0
+import ArcGIS.AppFramework.WebView 1.0
 import Esri.ArcGISRuntime 100.13
 import Esri.ArcGISRuntime.Toolkit 100.13
 
@@ -281,6 +283,7 @@ Rectangle {
     StackLayout {
         width: backgroundImage.width
         anchors.top: startPageTabs.bottom
+        anchors.bottom: backgroundImage.bottom
 
         currentIndex: startPageTabs.currentIndex
 
@@ -456,96 +459,24 @@ Rectangle {
             }
         }
 
-        ColumnLayout {
+        Rectangle {
             id: registerTab
+            anchors.fill: parent
 
-            Layout.fillWidth: true
-            Layout.fillHeight: true
-
-            spacing: 10 * AppFramework.displayScaleFactor
-
-            TextField {
-                Layout.preferredWidth: 0.8 * parent.width
-                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
-                id: userTextNew
-                color: "#edb14c"
-                placeholderText: "Account"
-                placeholderTextColor: "grey"
-                background: Rectangle {
-                    color: "#000000"
-                    radius: 4
-                }
-                //anchors.horizontalCenter: parent.horizontalCenter
-                Layout.alignment: Qt.AlignHCenter
-                width: parent.width * 0.8
-                leftPadding: 10.0
-                rightPadding: 10.0
-                font {
-                    pointSize: 15
-                }
+            Component.onCompleted: {
+                browserView.show();
             }
 
-            TextField {
-                Layout.preferredWidth: 0.8 * parent.width
-                visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
-                id: pwdTextNew
-                color: "#edb14c"
-                placeholderText: "Password"
-                placeholderTextColor: "grey"
-                background: Rectangle {
-                    color: "#000000"
-                    radius: 4
-                }
-                //anchors.horizontalCenter: parent.horizontalCenter
-                Layout.alignment: Qt.AlignHCenter
-                width: parent.width * 0.8
-                leftPadding: 10.0
-                rightPadding: 10.0
-                verticalAlignment: TextInput.AlignVCenter
-                echoMode: TextInput.Password
-                font {
-                    pointSize: 15
-                }
-            }
-
-            Button {
-                id: registerButton
-                text: "Register"
-
-                contentItem: Text {
-                    text: registerButton.text
-                    font: registerButton.font
-                    opacity: enabled ? 1.0 : 0.3
-                    color: "#ffffff"
-                    horizontalAlignment: Text.AlignHCenter
-                    verticalAlignment: Text.AlignVCenter
-                    elide: Text.ElideRight
-                }
-
-                enabled: !portal.user /*portal.loadStatus !== Enums.LoadStatusLoaded*/ && userTextNew.text.length > 0 && pwdTextNew.text.length > 0
-                background: Rectangle {
-                    color: "#edb14c"
-                    radius: 4
-                }
-                width: parent.width * 0.4
-                Layout.alignment: Qt.AlignHCenter
-                font {
-                    pointSize: 15
-                }
-                onClicked:{
-                    console.log("register", userTextNew.text, pwdTextNew.text);
-                    // HOW TO SUBMIT REGISTRATION???
-                }
-            }
-
-            // This seems necessary to correctly center the elements above
-            Rectangle {
-                Layout.topMargin: 25 * AppFramework.displayScaleFactor
-                Layout.fillWidth: true
-                Layout.preferredHeight: 45 * AppFramework.displayScaleFactor
-                color: "transparent"
+            // TRY WEBVIEW
+            BrowserView {
+             id: browserView
+             anchors.fill: parent
+             primaryColor:"#8f499c"
+             foregroundColor: "#f7d4f4"
+             url: "https://globalche.maps.arcgis.com/sharing/rest/oauth2/signup?client_id=QVuTzZ3CvcgTPNC9&response_type=token&expiration=20160&showSocialLogins=true&locale=en-us&redirect_uri=https%3A%2F%2Fexample-page-globalche.hub.arcgis.com%2Ftorii-provider-arcgis%2Fhub-redirect.html"
             }
         }
+
     }
 
 
