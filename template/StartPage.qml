@@ -20,6 +20,7 @@ import QtQuick.Controls 2.15
 import QtQuick.Controls 1.4 as QC1
 import QtQuick.Layouts 1.15
 import QtGraphicalEffects 1.0
+import QtWebView 1.15
 
 import ArcGIS.AppFramework 1.0
 import ArcGIS.AppFramework.InterAppCommunication 1.0
@@ -467,14 +468,18 @@ Rectangle {
                 browserView.show();
             }
 
-            // TRY WEBVIEW
-            BrowserView {
-             id: browserView
-             anchors.fill: parent
-             primaryColor:"#8f499c"
-             foregroundColor: "#f7d4f4"
-             url: "https://globalche.maps.arcgis.com/sharing/rest/oauth2/signup?client_id=QVuTzZ3CvcgTPNC9&response_type=token&expiration=20160&showSocialLogins=true&locale=en-us&redirect_uri=https%3A%2F%2Fexample-page-globalche.hub.arcgis.com%2Ftorii-provider-arcgis%2Fhub-redirect.html"
+            WebView {
+                id: browserView
+                anchors.fill: parent
+                url: "https://globalche.maps.arcgis.com/sharing/rest/oauth2/signup?client_id=QVuTzZ3CvcgTPNC9&response_type=token&expiration=20160&showSocialLogins=true&locale=en-us&redirect_uri=https%3A%2F%2Fexample-page-globalche.hub.arcgis.com%2Ftorii-provider-arcgis%2Fhub-redirect.html"
+
+                onUrlChanged: {
+                    console.log("WebView.onUrlChanged :", url);
+                    startPageTabs.currentIndex = 0;
+                }
+
             }
+
         }
 
     }
