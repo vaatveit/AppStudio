@@ -39,6 +39,8 @@ App {
 
     //--------------------------------------------------------------------------
 
+    property string language: "en"
+
     property alias surveysFolder: surveysFolder
     property alias portal: portal
     property var userInfo
@@ -390,8 +392,15 @@ App {
 
         initialItem: startPage
 
-        function pushHomePage() {
+        function pushHomePage(_language) {
+            language = _language;
+            console.log("pushHomePage", language)
             push(homePage);
+        }
+
+        function pushLanguagePage()
+        {
+            push(languagePage);
         }
 
         function restartSurvey() {
@@ -580,7 +589,7 @@ App {
             ready: !initializing && !app.portal.isConnecting && !app.portal.errorPopup
 
             onSignedIn: {
-                showHomePage();
+                mainStackView.pushLanguagePage();
             }
 
             onStartAnonymous: {
@@ -589,6 +598,21 @@ App {
         }
     }
 
+    //--------------------------------------------------------------------------
+
+    Component {
+        id: languagePage
+
+        LanguagePage {
+            portal: app.portal
+
+            Component.onCompleted: {
+                console.log("LanguagePage completed")
+            }
+        }
+    }
+
+    //--------------------------------------------------------------------------
     //--------------------------------------------------------------------------
 
     Component {

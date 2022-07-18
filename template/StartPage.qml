@@ -126,7 +126,7 @@ Rectangle {
         AppText {
             id: welcomeText
             Layout.fillWidth: true
-            text: portal.user ? "Welcome " + portal.user.fullName : "Welcome to the Global CHE Network"
+            text: portal.user ? qsTr("Welcome ") + portal.user.fullName : qsTr("Welcome to the Global CHE Network")
             color: "#edb14c"
             horizontalAlignment: Text.AlignHCenter
             wrapMode: Text.WrapAtWordBoundaryOrAnywhere
@@ -323,7 +323,7 @@ Rectangle {
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: userText
                 color: "#edb14c"
-                placeholderText: "Account"
+                placeholderText: qsTr("Account")
                 placeholderTextColor: "grey"
                 background: Rectangle {
                     color: "#000000"
@@ -344,7 +344,7 @@ Rectangle {
                 visible: !portal.user  //portal.loadStatus !== Enums.LoadStatusLoaded
                 id: pwdText
                 color: "#edb14c"
-                placeholderText: "Password"
+                placeholderText: qsTr("Password")
                 placeholderTextColor: "grey"
                 background: Rectangle {
                     color: "#000000"
@@ -364,7 +364,7 @@ Rectangle {
 
             Button {
                 id: loginButton
-                text: "Login"
+                text: qsTr("Login")
 
                 contentItem: Text {
                     text: loginButton.text
@@ -394,7 +394,7 @@ Rectangle {
 
             Button {
                 id: forgotButton
-                text: "Forgot Password?"
+                text: qsTr("Forgot Password?")
 
                 contentItem: Text {
                     text: forgotButton.text
@@ -477,11 +477,8 @@ Rectangle {
                     console.log("WebView.onUrlChanged :", url);
                     startPageTabs.currentIndex = 0;
                 }
-
             }
-
         }
-
     }
 
 
