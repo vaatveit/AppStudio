@@ -818,7 +818,7 @@ AppPage {
 
         target: portal
 
-        onSignedInChanged: {
+        function onSignedInChanged() {
             if (portal.signedIn && signinConnections.showPage) {
                 stackView.push({
                                    item: signinConnections.showPage,

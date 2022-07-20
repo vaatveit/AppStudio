@@ -55,7 +55,7 @@ Rectangle {
 
     readonly property bool active: QC1.Stack.Active
 
-    property string language: "en"
+    property string language: "default"
 
     //--------------------------------------------------------------------------
 
@@ -279,7 +279,7 @@ Rectangle {
                 }
 
                 onClicked: {
-                    language = "en";
+                    language = "default";
                 }
             }
 
@@ -320,7 +320,7 @@ Rectangle {
                 }
 
                 onClicked: {
-                    language = "es";
+                    language = "Español (es)";
                 }
             }
 
@@ -361,7 +361,7 @@ Rectangle {
                 }
 
                 onClicked: {
-                    language = "fr";
+                    language = "Français (fr)";
                 }
             }
         }

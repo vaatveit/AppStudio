@@ -39,7 +39,7 @@ App {
 
     //--------------------------------------------------------------------------
 
-    property string language: "en"
+    property string language: "default"
 
     property alias surveysFolder: surveysFolder
     property alias portal: portal

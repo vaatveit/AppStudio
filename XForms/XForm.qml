@@ -58,6 +58,8 @@ StackView {
     property var languages: []
     property alias languageName: languageText.text
 
+    property string selectedLanguage
+
     readonly property alias localeProperties: localeProperties
     readonly property alias localeInfo: localeProperties // Workaround for backward compatibility
 
@@ -504,11 +506,11 @@ StackView {
     Connections {
         target: itemsetsData
 
-        onEvent: {
+        function onEvent() {
             statistics.event(name);
         }
 
-        onEventEnd: {
+        function onEventEnd() {
             statistics.eventEnd(name);
         }
     }
@@ -692,6 +694,8 @@ StackView {
         }
 
         logLocaleInfo();
+
+        console.log("xform refresh: ready")
 
         status = statusReady;
     }
@@ -2576,6 +2580,8 @@ StackView {
     //--------------------------------------------------------------------------
 
     function initializeLanguages() {
+        console.log("initializeLanguages", selectedLanguage);
+
         if (!json.head || !json.head.model) {
             return;
         }
@@ -2594,10 +2600,17 @@ StackView {
             var lang = Attribute.value(translation, Attribute.kLang);
             list.push(lang);
 
-            if (typeof translation["@default"] === "string") {
+            if (typeof translation["@default"] === "string" && !selectedLanguage) {
                 defaultLanguage = lang;
             }
         }
+
+
+        if (selectedLanguage)
+        {
+            defaultLanguage = selectedLanguage;
+        }
+
 
 
         if (list.length > 0 && !(defaultLanguage > "")) {
@@ -2689,6 +2702,8 @@ StackView {
     //--------------------------------------------------------------------------
 
     onLanguageChanged: {
+        console.log("XForm.onLanguageChanged", language);
+
         var defaultLocale = localeProperties.systemLocale;
 
         if (language == kLanguageDefault) {
@@ -2968,7 +2983,7 @@ StackView {
             Connections {
                 target: xform
 
-                onClearErrors: {
+                function onClearErrors() {
                     clearError();
                 }
             }

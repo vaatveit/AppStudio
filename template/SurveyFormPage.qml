@@ -57,6 +57,8 @@ Rectangle {
     property bool asynchronous: appFeatures.asyncFormLoader
     property bool readOnly: false
 
+    property string selectedLanguage;
+
     //--------------------------------------------------------------------------
 
     property SurveyMapSources surveyMapSources: SurveyMapSources {
@@ -101,6 +103,10 @@ Rectangle {
     //--------------------------------------------------------------------------
 
     function initialize() {
+        console.log("initialize", app.language)
+
+        selectedLanguage = app.language;
+
         if (parameters) {
             initializeParameters();
         }
@@ -198,7 +204,11 @@ Rectangle {
             //--------------------------------------------------------------------------
 
             Component.onCompleted: {
+                console.log("formItem.onCompleted", selectedLanguage)
+
                 page.xform = xform;
+
+                xform.selectedLanguage = selectedLanguage;
             }
 
             //--------------------------------------------------------------------------
@@ -264,6 +274,8 @@ Rectangle {
                         checkable: true
                         checked: language === xform.language
                         onTriggered: {
+                            console.log("languageItem.onTriggered", language)
+                            // THIS TRIGGERS onLanguageChanged
                             xform.language = language;
                         }
                     }

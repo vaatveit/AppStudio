@@ -24,7 +24,7 @@ NetworkRequest {
     //--------------------------------------------------------------------------
 
     property Portal portal
-    property bool trace: false
+    property bool trace: true
 
     //--------------------------------------------------------------------------
 
